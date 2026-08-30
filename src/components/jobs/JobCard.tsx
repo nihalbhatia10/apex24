@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { MapPin, Briefcase, Clock, IndianRupee } from 'lucide-react';
 import { motion } from 'framer-motion';
