@@ -24,6 +24,7 @@ export function Footer() {
             <Link href="/services" className="text-sm text-muted-foreground hover:text-accent transition-colors">Services</Link>
             <Link href="/employers" className="text-sm text-muted-foreground hover:text-accent transition-colors">For Employers</Link>
             <Link href="/candidates" className="text-sm text-muted-foreground hover:text-accent transition-colors">For Candidates</Link>
+            <Link href="/jobs" className="text-sm text-muted-foreground hover:text-accent transition-colors">Jobs</Link>
             <Link href="/industries" className="text-sm text-muted-foreground hover:text-accent transition-colors">Industries</Link>
             <Link href="/contact" className="text-sm text-muted-foreground hover:text-accent transition-colors">Contact</Link>
           </div>

@@ -13,6 +13,7 @@ const navLinks = [
   { name: "Services", href: "/services" },
   { name: "For Employers", href: "/employers" },
   { name: "For Candidates", href: "/candidates" },
+  { name: "Jobs", href: "/jobs" },
   { name: "Industries", href: "/industries" },
   { name: "Contact", href: "/contact" },
 ]
