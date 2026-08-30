@@ -135,14 +135,18 @@ export default function ContactPage() {
         </div>
       </section>
       
-      {/* Map Placeholder */}
-      <section className="h-[400px] bg-primary/20 relative flex items-center justify-center border-t border-border">
-        <div className="text-center">
-          <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-4 opacity-50" />
-          <p className="text-muted-foreground font-semibold tracking-widest uppercase text-sm">
-            [GOOGLE MAPS INTEGRATION PLACEHOLDER]
-          </p>
-        </div>
+      {/* Google Maps Integration */}
+      <section className="h-[400px] w-full bg-primary/20 relative border-t border-border">
+        <iframe 
+          src="https://maps.google.com/maps?q=Dr.%20Homi%20Bhabha%20Rd,%20Ram%20Nagar,%20Bavdhan,%20Pune,%20Maharashtra%20411021&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+          width="100%" 
+          height="100%" 
+          style={{ border: 0 }} 
+          allowFullScreen 
+          loading="lazy" 
+          referrerPolicy="no-referrer-when-downgrade"
+          className="absolute inset-0"
+        />
       </section>
     </div>
   )
