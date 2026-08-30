@@ -5,10 +5,10 @@ import Papa from 'papaparse';
 
 // You will need to replace this placeholder URL with your published Google Sheet CSV URL
 // e.g., "https://docs.google.com/spreadsheets/d/e/2PACX-xxxxxx/pub?output=csv"
-const GOOGLE_SHEETS_CSV_URL = process.env.NEXT_PUBLIC_JOBS_CSV_URL || "PLACEHOLDER_URL";
+const GOOGLE_SHEETS_CSV_URL = process.env.NEXT_PUBLIC_JOBS_CSV_URL || "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0OFPji930HZ49PFUSeHaWU6GpCEx2tEGRFmiGcRCO1RmcfgJ70BDUQbQ48_adhl4yrWE_McnTSfj9/pub?output=csv";
 
 async function getJobs(): Promise<Job[]> {
-  if (GOOGLE_SHEETS_CSV_URL === "PLACEHOLDER_URL") {
+  if (!GOOGLE_SHEETS_CSV_URL || GOOGLE_SHEETS_CSV_URL === "PLACEHOLDER_URL") {
     // Return sample data if URL is not set
     return [
       {
