@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from "react"
 import { FadeIn } from "@/components/animations/FadeIn"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/forms/Input"
@@ -6,6 +9,49 @@ import { SectionHeading } from "@/components/ui/SectionHeading"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      sheetName: 'Contact',
+      type: formData.get('type'),
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      company: formData.get('company'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+      });
+      
+      const result = await response.json();
+      if (result.result === 'success') {
+        setSubmitStatus('success');
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error("Submission error", error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero */}
@@ -87,10 +133,17 @@ export default function ContactPage() {
                   <p className="text-muted-foreground text-sm">Select the nature of your enquiry so we can route your message to the right consultant.</p>
                 </div>
                 
-                <form className="flex flex-col gap-6">
+                {submitStatus === 'success' ? (
+                  <div className="bg-green-500/10 border border-green-500/20 text-green-600 p-6 rounded-sm mb-6 text-center">
+                    <h4 className="font-bold text-lg mb-2">Message Sent Successfully!</h4>
+                    <p className="text-sm">Thank you for reaching out. Our team will get back to you shortly.</p>
+                    <Button variant="outline" className="mt-4" onClick={() => setSubmitStatus('idle')}>Send Another Message</Button>
+                  </div>
+                ) : (
+                <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
                   <div className="flex flex-col gap-2">
                     <label className="text-xs uppercase tracking-wider text-muted-foreground">Nature of Enquiry</label>
-                    <select className="flex h-12 w-full rounded-sm border border-border bg-background/50 px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 transition-colors">
+                    <select name="type" required className="flex h-12 w-full rounded-sm border border-border bg-background/50 px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 transition-colors">
                       <option value="employer">Employer Enquiry (Looking to Hire)</option>
                       <option value="candidate">Candidate Enquiry (Looking for Jobs)</option>
                       <option value="general">General Enquiry / Partnership</option>
@@ -100,34 +153,39 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
                       <label className="text-xs uppercase tracking-wider text-muted-foreground">Full Name</label>
-                      <Input placeholder="John Doe" />
+                      <Input name="name" required placeholder="John Doe" />
                     </div>
                     <div className="flex flex-col gap-2">
                       <label className="text-xs uppercase tracking-wider text-muted-foreground">Email Address</label>
-                      <Input type="email" placeholder="john@example.com" />
+                      <Input name="email" type="email" required placeholder="john@example.com" />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
                       <label className="text-xs uppercase tracking-wider text-muted-foreground">Phone Number</label>
-                      <Input type="tel" placeholder="+91 98765 43210" />
+                      <Input name="phone" type="tel" required placeholder="+91 98765 43210" />
                     </div>
                     <div className="flex flex-col gap-2">
                       <label className="text-xs uppercase tracking-wider text-muted-foreground">Company Name (If applicable)</label>
-                      <Input placeholder="Acme Corp" />
+                      <Input name="company" placeholder="Acme Corp" />
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-2">
                     <label className="text-xs uppercase tracking-wider text-muted-foreground">Message</label>
-                    <Textarea placeholder="How can we assist you today?" />
+                    <Textarea name="message" required placeholder="How can we assist you today?" />
                   </div>
                   
-                  <Button variant="secondary" size="lg" className="w-full md:w-auto mt-4 self-start">
-                    Send Message
+                  {submitStatus === 'error' && (
+                    <p className="text-red-500 text-sm font-medium mt-2">Oops! Something went wrong. Please try again or contact us directly.</p>
+                  )}
+                  
+                  <Button type="submit" disabled={isSubmitting} variant="secondary" size="lg" className="w-full md:w-auto mt-4 self-start">
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
+                )}
               </div>
             </FadeIn>
           </div>
