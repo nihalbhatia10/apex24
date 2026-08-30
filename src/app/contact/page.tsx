@@ -40,8 +40,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-foreground mb-1">Office Address</h4>
-                    <p className="text-muted-foreground text-sm">[APEX 24 OFFICE ADDRESS LINE 1]</p>
-                    <p className="text-muted-foreground text-sm">[APEX 24 OFFICE ADDRESS LINE 2]</p>
+                    <p className="text-muted-foreground text-sm">GQFJ+96H, Dr. Homi Bhabha Rd,</p>
+                    <p className="text-muted-foreground text-sm">Ram Nagar, Bavdhan, Pune, Maharashtra 411021</p>
                   </div>
                 </div>
 
@@ -51,8 +51,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-foreground mb-1">Phone</h4>
-                    <p className="text-muted-foreground text-sm">[APEX 24 PHONE NUMBER 1]</p>
-                    <p className="text-muted-foreground text-sm">[APEX 24 PHONE NUMBER 2]</p>
+                    <p className="text-muted-foreground text-sm">+91 90210 68823</p>
                   </div>
                 </div>
 
@@ -62,7 +61,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-foreground mb-1">Email</h4>
-                    <p className="text-muted-foreground text-sm">[APEX 24 EMAIL]</p>
+                    <p className="text-muted-foreground text-sm">bhatiavinay34@gmail.com</p>
                   </div>
                 </div>
 
@@ -72,7 +71,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-foreground mb-1">Working Hours</h4>
-                    <p className="text-muted-foreground text-sm">[APEX 24 WORKING HOURS]</p>
+                    <p className="text-muted-foreground text-sm">Monday - Friday, 9:00 AM - 6:00 PM</p>
                   </div>
                 </div>
               </div>
