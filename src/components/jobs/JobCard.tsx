@@ -3,6 +3,7 @@
 import React from 'react';
 import { MapPin, Briefcase, Clock, IndianRupee } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 
 export interface Job {
@@ -66,8 +67,8 @@ export const JobCard: React.FC<JobCardProps> = ({ job }) => {
         <Button variant="outline" size="sm" className="font-semibold">
           View Details
         </Button>
-        <Button size="sm" className="font-semibold">
-          Apply Now
+        <Button size="sm" className="font-semibold" asChild>
+          <Link href="/candidates">Apply Now</Link>
         </Button>
       </div>
     </motion.div>
