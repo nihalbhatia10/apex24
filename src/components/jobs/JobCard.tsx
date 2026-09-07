@@ -61,7 +61,7 @@ export const JobCard: React.FC<JobCardProps> = ({ job }) => {
         )}
       </div>
 
-      <p className={`text-sm mb-6 text-foreground/80 ${isExpanded ? '' : 'line-clamp-3'}`}>
+      <p className={`text-sm mb-6 text-foreground/80 whitespace-pre-wrap ${isExpanded ? '' : 'line-clamp-3'}`}>
         {job.description}
       </p>
 
