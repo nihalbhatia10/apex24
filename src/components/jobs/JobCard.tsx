@@ -22,6 +22,8 @@ interface JobCardProps {
 }
 
 export const JobCard: React.FC<JobCardProps> = ({ job }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
   return (
     <motion.div 
       className="bg-card text-card-foreground p-6 rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow duration-300"
@@ -59,13 +61,18 @@ export const JobCard: React.FC<JobCardProps> = ({ job }) => {
         )}
       </div>
 
-      <p className="text-sm line-clamp-3 mb-6 text-foreground/80">
+      <p className={`text-sm mb-6 text-foreground/80 ${isExpanded ? '' : 'line-clamp-3'}`}>
         {job.description}
       </p>
 
       <div className="flex justify-between items-center mt-auto pt-4 border-t border-border">
-        <Button variant="outline" size="sm" className="font-semibold">
-          View Details
+        <Button 
+          variant="outline" 
+          size="sm" 
+          className="font-semibold"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          {isExpanded ? 'Hide Details' : 'View Details'}
         </Button>
         <Button size="sm" className="font-semibold" asChild>
           <Link href="/candidates">Apply Now</Link>
