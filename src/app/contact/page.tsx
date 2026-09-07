@@ -107,7 +107,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-foreground mb-1">Email</h4>
-                    <p className="text-muted-foreground text-sm">bhatiavinay34@gmail.com</p>
+                    <p className="text-muted-foreground text-sm">info@apex24consultancy.com</p>
                   </div>
                 </div>
 
