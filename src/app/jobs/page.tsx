@@ -3,6 +3,8 @@ import { JobCard, Job } from '@/components/jobs/JobCard';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import Papa from 'papaparse';
 
+export const dynamic = 'force-dynamic';
+
 // You will need to replace this placeholder URL with your published Google Sheet CSV URL
 // e.g., "https://docs.google.com/spreadsheets/d/e/2PACX-xxxxxx/pub?output=csv"
 const GOOGLE_SHEETS_CSV_URL = process.env.NEXT_PUBLIC_JOBS_CSV_URL || "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0OFPji930HZ49PFUSeHaWU6GpCEx2tEGRFmiGcRCO1RmcfgJ70BDUQbQ48_adhl4yrWE_McnTSfj9/pub?output=csv";
@@ -45,8 +47,8 @@ async function getJobs(): Promise<Job[]> {
   }
 
   try {
-    // Revalidate the cache every 60 seconds so new jobs appear quickly
-    const res = await fetch(GOOGLE_SHEETS_CSV_URL, { next: { revalidate: 60 } }); 
+    // Disable caching entirely so new jobs appear instantly
+    const res = await fetch(GOOGLE_SHEETS_CSV_URL, { cache: 'no-store' }); 
     if (!res.ok) throw new Error('Failed to fetch jobs');
     const csvData = await res.text();
     
