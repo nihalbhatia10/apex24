@@ -34,7 +34,7 @@ export function Footer() {
             <h4 className="font-heading font-bold uppercase tracking-wider text-sm mb-2 text-foreground">Contact</h4>
             <div className="text-sm text-muted-foreground flex flex-col space-y-2">
               <span>+91 90210 68823</span>
-              <span>info@apex24consultancy.com</span>
+              <span>hr@apex24consultancy.com</span>
               <span className="leading-snug">GQFJ+96H, Dr. Homi Bhabha Rd, Ram Nagar, Bavdhan, Pune, Maharashtra 411021</span>
             </div>
           </div>
