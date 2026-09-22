@@ -5,6 +5,7 @@ import { MapPin, Briefcase, Clock, IndianRupee } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
+import { createJobSlug } from '@/lib/utils';
 
 export interface Job {
   id: string;
@@ -70,9 +71,11 @@ export const JobCard: React.FC<JobCardProps> = ({ job }) => {
           variant="outline" 
           size="sm" 
           className="font-semibold"
-          onClick={() => setIsExpanded(!isExpanded)}
+          asChild
         >
-          {isExpanded ? 'Hide Details' : 'View Details'}
+          <Link href={`/jobs/${createJobSlug(job.title, job.location)}`}>
+            View Job
+          </Link>
         </Button>
         <Button size="sm" className="font-semibold" asChild>
           <Link href="/candidates">Apply Now</Link>

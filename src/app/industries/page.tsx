@@ -1,6 +1,12 @@
 import { FadeIn } from "@/components/animations/FadeIn"
 import { SectionHeading } from "@/components/ui/SectionHeading"
 import { ArrowRight, Building2, ShieldCheck, Monitor, Smartphone, Briefcase, Award } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Industries We Serve in India | APEX 24',
+  description: 'APEX 24 specializes in talent acquisition for IT, BFSI, Corporate, and specialized sectors across India.',
+}
 
 const industryData = [
   { 

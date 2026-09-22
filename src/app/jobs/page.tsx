@@ -11,51 +11,16 @@ const GOOGLE_SHEETS_CSV_URL = process.env.NEXT_PUBLIC_JOBS_CSV_URL || "https://d
 
 async function getJobs(): Promise<Job[]> {
   if (!GOOGLE_SHEETS_CSV_URL || GOOGLE_SHEETS_CSV_URL === "PLACEHOLDER_URL") {
-    // Return sample data if URL is not set
-    return [
-      {
-        id: "1",
-        title: "Senior Software Engineer",
-        company: "Tech Solutions Inc.",
-        location: "Mumbai, India",
-        type: "Full-time",
-        salary: "₹15,00,000 - ₹25,00,000",
-        description: "We are looking for an experienced Senior Software Engineer with a strong background in React and Node.js to lead our development team.",
-        postedDate: "2023-10-25"
-      },
-      {
-        id: "2",
-        title: "Marketing Manager",
-        company: "Global Brands",
-        location: "Delhi, India",
-        type: "Full-time",
-        salary: "₹12,00,000 - ₹18,00,000",
-        description: "Seeking a creative Marketing Manager to develop and execute innovative marketing campaigns across digital and traditional channels.",
-        postedDate: "2023-10-24"
-      },
-      {
-        id: "3",
-        title: "Data Analyst",
-        company: "DataCorp",
-        location: "Bangalore, India",
-        type: "Contract",
-        salary: "₹8,00,000 - ₹12,00,000",
-        description: "Join our data science team to analyze complex datasets and provide actionable business insights using Python and SQL.",
-        postedDate: "2023-10-23"
-      }
-    ];
+    return [];
   }
 
   try {
-    // Disable caching entirely so new jobs appear instantly
     const res = await fetch(GOOGLE_SHEETS_CSV_URL, { cache: 'no-store' }); 
     if (!res.ok) throw new Error('Failed to fetch jobs');
     const csvData = await res.text();
     
-    // Parse the CSV data
     const parsed = Papa.parse<Job>(csvData, { header: true, skipEmptyLines: true });
     
-    // Ensure jobs have valid titles before returning
     return parsed.data.filter(job => job.title && job.title.trim() !== '');
   } catch (error) {
     console.error("Error fetching jobs:", error);

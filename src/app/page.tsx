@@ -52,14 +52,14 @@ export default function Home() {
             
             <FadeIn delay={0.4} direction="up">
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-[1.1] tracking-tight mb-8">
-                Connecting Talent <br className="hidden md:block" />
-                <span className="text-muted-foreground">With Opportunity.</span>
+                Recruitment & Talent Solutions <br className="hidden md:block" />
+                <span className="text-muted-foreground">Across India.</span>
               </h1>
             </FadeIn>
             
             <FadeIn delay={0.6} direction="up">
               <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl leading-relaxed">
-                We help organizations identify the right people while guiding professionals toward meaningful career milestones. A premium recruitment experience built on trust and human connection.
+                APEX 24 is a Pune-based recruitment and talent solutions consultancy helping organizations across India identify, attract and hire qualified professionals. We provide specialized recruitment, bulk hiring, and executive search services.
               </p>
             </FadeIn>
             

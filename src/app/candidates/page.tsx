@@ -93,10 +93,10 @@ export default function CandidatesPage() {
           <FadeIn direction="up">
             <span className="text-accent text-sm font-semibold tracking-widest uppercase mb-4 block">For Candidates</span>
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-foreground max-w-4xl">
-              Your next opportunity deserves the right direction.
+              Jobs & Career Opportunities Across India
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              We connect ambitious professionals with organizations that value their expertise and foster their growth.
+              We connect ambitious professionals with exceptional organizations across the country that value their expertise and foster their growth.
             </p>
           </FadeIn>
         </div>

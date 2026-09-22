@@ -60,7 +60,7 @@ export default function ContactPage() {
           <FadeIn direction="up">
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">Let's start a conversation.</h1>
             <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              Whether you are an organization seeking exceptional talent or a professional exploring new opportunities, our team is ready to connect.
+              Based in Pune and serving organizations across India, we are ready to connect whether you are an employer seeking exceptional talent or a professional exploring new opportunities.
             </p>
           </FadeIn>
         </div>

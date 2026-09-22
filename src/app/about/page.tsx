@@ -2,6 +2,12 @@ import Image from "next/image"
 import { FadeIn } from "@/components/animations/FadeIn"
 import { SectionHeading } from "@/components/ui/SectionHeading"
 import { CheckCircle2 } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'About APEX 24 | Recruitment Consultancy in India',
+  description: 'Learn about APEX 24, a Pune-based recruitment consultancy serving employers and candidates across India with premium talent acquisition services.',
+}
 
 export default function AboutPage() {
   return (
@@ -15,8 +21,9 @@ export default function AboutPage() {
           <FadeIn direction="up">
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6">About Apex 24</h1>
             <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              We are a dedicated recruitment and talent acquisition consultancy driven by the belief that the right professional connections transform organizations.
+              Based in Pune, APEX 24 provides recruitment and talent solutions to organizations across India. We are driven by the belief that the right professional connections transform organizations.
             </p>
+            {/* TODO: Add specific leadership information, founding story, and detailed recruitment philosophy here */}
           </FadeIn>
         </div>
       </section>

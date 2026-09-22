@@ -3,6 +3,12 @@ import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/forms/Input"
 import { Textarea } from "@/components/forms/Textarea"
 import { SectionHeading } from "@/components/ui/SectionHeading"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Recruitment Solutions for Employers Across India | APEX 24',
+  description: 'APEX 24 provides IT, BFSI, bulk hiring and executive search recruitment solutions for employers across India. Submit your hiring requirements today.',
+}
 
 export default function EmployersPage() {
   return (
@@ -12,10 +18,10 @@ export default function EmployersPage() {
           <FadeIn direction="up">
             <span className="text-accent text-sm font-semibold tracking-widest uppercase mb-4 block">For Employers</span>
             <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 text-foreground max-w-4xl">
-              Better hiring starts with the right recruitment partner.
+              Recruitment Solutions for Employers Across India
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              We provide strategic talent acquisition solutions to help you build resilient, high-performing teams.
+              We provide strategic talent acquisition solutions to help organizations build resilient, high-performing teams anywhere in India.
             </p>
           </FadeIn>
         </div>
@@ -89,7 +95,7 @@ export default function EmployersPage() {
                 </div>
                 
                 <Button variant="secondary" size="lg" className="w-full mt-4">
-                  Start a Conversation
+                  Submit Your Hiring Requirement
                 </Button>
               </form>
             </FadeIn>

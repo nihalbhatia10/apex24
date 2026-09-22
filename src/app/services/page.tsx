@@ -1,6 +1,12 @@
 import Image from "next/image"
 import { FadeIn } from "@/components/animations/FadeIn"
 import { SectionHeading } from "@/components/ui/SectionHeading"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: 'Recruitment Services Across India | APEX 24',
+  description: 'APEX 24 provides specialized recruitment, bulk hiring, executive search, and talent acquisition services across India from our Pune headquarters.',
+}
 
 const detailedServices = [
   { num: "01", title: "Bulk Hiring", desc: "For organizations scaling rapidly, we provide efficient, high-volume recruitment without compromising on the quality of hires. We manage the entire funnel from sourcing to onboarding.", target: "High-growth startups, established enterprises expanding operations." },
