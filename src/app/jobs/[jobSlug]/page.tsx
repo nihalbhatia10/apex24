@@ -59,6 +59,11 @@ export async function generateMetadata({ params }: { params: Promise<{ jobSlug: 
 export default async function JobDetailPage({ params }: { params: Promise<{ jobSlug: string }> }) {
   const { jobSlug } = await params;
   const jobs = await getJobs();
+  
+  console.log('--- DEBUG JobDetailPage ---');
+  console.log('Requested jobSlug:', jobSlug);
+  jobs.forEach(j => console.log('Job:', j.id, 'Slug:', createJobSlug(j.title, j.location, j.id)));
+  
   const job = jobs.find(j => createJobSlug(j.title, j.location, j.id) === jobSlug);
 
   if (!job) {
