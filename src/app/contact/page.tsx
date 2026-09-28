@@ -86,8 +86,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-foreground mb-1">Office Address</h4>
-                    <p className="text-muted-foreground text-sm">GQFJ+96H, Dr. Homi Bhabha Rd,</p>
-                    <p className="text-muted-foreground text-sm">Ram Nagar, Bavdhan, Pune, Maharashtra 411021</p>
+                    <a href="https://share.google/To2IdDM1TBgEsRxue" target="_blank" rel="noopener noreferrer" className="block group">
+                      <p className="text-muted-foreground text-sm group-hover:text-accent transition-colors">GQFJ+96H, Dr. Homi Bhabha Rd,</p>
+                      <p className="text-muted-foreground text-sm group-hover:text-accent transition-colors">Ram Nagar, Bavdhan, Pune, Maharashtra 411021</p>
+                    </a>
                   </div>
                 </div>
 
@@ -196,7 +198,7 @@ export default function ContactPage() {
       {/* Google Maps Integration */}
       <section className="h-[400px] w-full bg-primary/20 relative border-t border-border">
         <iframe 
-          src="https://maps.google.com/maps?q=Dr.%20Homi%20Bhabha%20Rd,%20Ram%20Nagar,%20Bavdhan,%20Pune,%20Maharashtra%20411021&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+          src="https://maps.google.com/maps?q=Apex24%20Consultancy,%20Pune&t=&z=15&ie=UTF8&iwloc=&output=embed" 
           width="100%" 
           height="100%" 
           style={{ border: 0 }} 
