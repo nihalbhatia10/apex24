@@ -22,17 +22,24 @@ async function getJobs(): Promise<Job[]> {
     const res = await fetch(GOOGLE_SHEETS_CSV_URL, { cache: 'no-store' }); 
     if (!res.ok) throw new Error('Failed to fetch jobs');
     const csvData = await res.text();
-    const parsed = Papa.parse<Job>(csvData, { header: true, skipEmptyLines: true });
-    return parsed.data.filter(job => job.title && job.title.trim() !== '');
+    const parsed = Papa.parse<any>(csvData, { header: true, skipEmptyLines: true });
+    return parsed.data.map((row: any) => {
+      const idKey = Object.keys(row)[0];
+      return {
+        ...row,
+        id: row.id || row[idKey]
+      } as Job;
+    }).filter((job: Job) => job.title && job.title.trim() !== '');
   } catch (error) {
     console.error("Error fetching jobs:", error);
     return [];
   }
 }
 
-export async function generateMetadata({ params }: { params: { jobSlug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ jobSlug: string }> }): Promise<Metadata> {
+  const { jobSlug } = await params;
   const jobs = await getJobs();
-  const job = jobs.find(j => createJobSlug(j.title, j.location) === params.jobSlug);
+  const job = jobs.find(j => createJobSlug(j.title, j.location, j.id) === jobSlug);
 
   if (!job) {
     return {
@@ -44,14 +51,15 @@ export async function generateMetadata({ params }: { params: { jobSlug: string }
     title: `${job.title} Job in ${job.location} | APEX 24`,
     description: `APEX 24 is hiring a ${job.title} in ${job.location}. Apply now for this ${job.type} position.`,
     alternates: {
-      canonical: `https://apex24consultancy.com/jobs/${params.jobSlug}`
+      canonical: `https://apex24consultancy.com/jobs/${jobSlug}`
     }
   };
 }
 
-export default async function JobDetailPage({ params }: { params: { jobSlug: string } }) {
+export default async function JobDetailPage({ params }: { params: Promise<{ jobSlug: string }> }) {
+  const { jobSlug } = await params;
   const jobs = await getJobs();
-  const job = jobs.find(j => createJobSlug(j.title, j.location) === params.jobSlug);
+  const job = jobs.find(j => createJobSlug(j.title, j.location, j.id) === jobSlug);
 
   if (!job) {
     notFound();

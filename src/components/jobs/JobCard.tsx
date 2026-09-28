@@ -73,7 +73,7 @@ export const JobCard: React.FC<JobCardProps> = ({ job }) => {
           className="font-semibold"
           asChild
         >
-          <Link href={`/jobs/${createJobSlug(job.title, job.location)}`}>
+          <Link href={`/jobs/${createJobSlug(job.title, job.location, job.id)}`}>
             View Job
           </Link>
         </Button>

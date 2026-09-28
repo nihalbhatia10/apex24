@@ -19,9 +19,15 @@ async function getJobs(): Promise<Job[]> {
     if (!res.ok) throw new Error('Failed to fetch jobs');
     const csvData = await res.text();
     
-    const parsed = Papa.parse<Job>(csvData, { header: true, skipEmptyLines: true });
+    const parsed = Papa.parse<any>(csvData, { header: true, skipEmptyLines: true });
     
-    return parsed.data.filter(job => job.title && job.title.trim() !== '');
+    return parsed.data.map(row => {
+      const idKey = Object.keys(row)[0];
+      return {
+        ...row,
+        id: row.id || row[idKey]
+      } as Job;
+    }).filter(job => job.title && job.title.trim() !== '');
   } catch (error) {
     console.error("Error fetching jobs:", error);
     return [];

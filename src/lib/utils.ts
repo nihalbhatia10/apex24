@@ -5,8 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function createJobSlug(title: string, location: string): string {
-  const combined = `${title} ${location}`
+export function createJobSlug(title: string, location: string, id?: string): string {
+  const combined = id ? `${title} ${location} ${id}` : `${title} ${location}`
   return combined
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
